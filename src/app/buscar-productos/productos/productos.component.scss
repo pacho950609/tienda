@@ -1,0 +1,89 @@
+.card{
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.14);
+    border-radius: 0px;
+    margin-bottom: 15px;
+}
+
+.card-body{
+    padding: 8px;
+}
+
+
+
+.filterSearchBtn
+{
+    color: white;
+    background-color: #093E80;
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    min-width: 100%;
+}
+
+
+
+.productosContainerPrice{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    min-height: 100%;
+    text-align: center;
+
+}
+
+.productosLblPrice{
+    font-size: 13px;
+    text-align: center;
+    color: #444444;
+    font-weight: 600;
+    margin: 0;
+}
+
+
+
+.productosPrice{
+    color: #E16800;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.productosPriceBtn{
+    font-weight: bold;
+    color: white;
+    min-width: 100%;
+    background-color: #093E80;
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 576px) {
+    .productosContainerPrice{
+        border-left: none;
+        border-top: 2px dashed #CCCCCC;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+
+    .hotelsPrice{
+        font-size: 18px;
+    }
+
+    .card{
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+  
+    .productosPrice{
+        font-size: 20px;
+    }
+}
+

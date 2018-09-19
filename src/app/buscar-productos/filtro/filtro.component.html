@@ -1,0 +1,222 @@
+<div class="row wholeFilter">
+  
+  <div class="container-fluid col-md-4">
+        <div class="card imgSize2">
+                <div class="card-body" (click)="abrir()" data-toggle="modal" data-target="#myModal"  >
+                    <strong>Ver carrito</strong>
+            
+                </div>
+            </div>
+        <div class="card">
+                <div class="card-body">
+                    <strong>Categorias</strong>
+                </div>
+            </div>
+            <div class="card"  *ngFor="let categoria of categorias">
+                <div class="container filterType collapsed"  (click)="modificarProductosMostrar(categoria.id)" data-toggle="collapse" [attr.data-target]="'#' + categoria.name" role="button" aria-expanded="false" aria-controls="searchForm">
+                    <div class="container-fluid">
+                        <span>
+                        </span>
+                        <strong>{{categoria.name}}</strong>
+                        <span class="filterCollapseSearch"></span>
+                    </div>
+                </div>
+                <div class="container collapse searchForm" id="{{categoria.name}}" >
+                        <div class="card"  *ngFor="let subcategoria of categoria.sublevels">
+                                <div *ngIf="subcategoria.sublevels" (click)="modificarProductosMostrar(subcategoria.id)" class="container filterType collapsed" data-toggle="collapse" [attr.data-target]="'#' + subcategoria.name" role="button" aria-expanded="false" aria-controls="searchForm">
+                                    <div  class="container-fluid">
+                                        <span> 
+                                        </span>
+                                        <strong>{{subcategoria.name}}</strong>
+                                        <span class="filterCollapseSearch"></span>
+                                    </div>
+                                </div>
+                                <div *ngIf="!subcategoria.sublevels" (click)="modificarProductosMostrar(subcategoria.id)" class="container filterType collapsed"  aria-expanded="false" aria-controls="searchForm">
+                                        <div  class="container-fluid">
+                                            <span> 
+                                            </span>
+                                            <strong>{{subcategoria.name}}</strong>
+                                        </div>
+                                    </div>
+                                <div class="container collapse searchForm" id="{{subcategoria.name}}" >
+                                        <div class="card"  *ngFor="let subsubcategoria of subcategoria.sublevels">
+                                                <div *ngIf="subsubcategoria.sublevels" (click)="modificarProductosMostrar(subsubcategoria.id)" class="container filterType collapsed" data-toggle="collapse" [attr.data-target]="'#' + subsubcategoria.name" role="button" aria-expanded="false" aria-controls="searchForm">
+                                                    <div class="container-fluid">
+                                                        <span> 
+                                                        </span>
+                                                        <strong>{{subsubcategoria.name}}</strong>
+                                                        <span class="filterCollapseSearch"></span>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="!subsubcategoria.sublevels" (click)="modificarProductosMostrar(subsubcategoria.id)" class="container filterType collapsed"  role="button" aria-expanded="false" aria-controls="searchForm">
+                                                        <div class="container-fluid">
+                                                            <span> 
+                                                            </span>
+                                                            <strong>{{subsubcategoria.name}}</strong>
+                                                        </div>
+                                                    </div>
+                                                <div class="container collapse searchForm" id="{{subsubcategoria.name}}" >
+                                                        <div class="card"  *ngFor="let subsubsubcategoria of subsubcategoria.sublevels">
+                                                                <div *ngIf="subsubsubcategoria.sublevels" (click)="modificarProductosMostrar(subsubsubcategoria.id)" class="container filterType collapsed" data-toggle="collapse" [attr.data-target]="'#' + subsubsubcategoria.name" role="button" aria-expanded="false" aria-controls="searchForm">
+                                                                    <div  class="container-fluid">
+                                                                        <span> 
+                                                                        </span>
+                                                                        <strong>{{subsubsubcategoria.name}}</strong>
+                                                                        <span class="filterCollapseSearch"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div *ngIf="!subsubsubcategoria.sublevels" (click)="modificarProductosMostrar(subsubsubcategoria.id)" class="container filterType collapsed"  role="button" aria-expanded="false" aria-controls="searchForm">
+                                                                        <div  class="container-fluid">
+                                                                            <span> 
+                                                                            </span>
+                                                                            <strong>{{subsubsubcategoria.name}}</strong>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="container collapse searchForm" id="{{subsubsubcategoria.name}}" >
+                                                                        
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+            </div>
+            
+    <div class="card">
+        <div class="card-body">
+            <strong>Filtros</strong>
+        </div>
+    </div>
+    <div class="card" >
+        <div class="container filterType collapsed" data-toggle="collapse" href="#dispo" role="button" aria-expanded="false" aria-controls="searchForm">
+            <div class="container-fluid">
+                <span>
+                    <img class="imgSize" src="../assets/icons/filters/search.svg" >
+                </span>
+                <strong>Disponibilidad</strong>
+                <span class="filterCollapseSearch"></span>
+            </div>
+        </div>
+        <div class="container collapse searchForm" id="dispo" >
+            <form class="row form-inline"  (keydown.enter)="$event.preventDefault()">
+                <div class="col-lg-8 col-md-12 col-sm-9 col-12">
+                    <input type="text" class="form-control filterSearchInput" placeholder="Escoja una disponibilidad (true o false)"
+                    #nameFilterr nameFilter.value='' (keydown.enter)=" filtrarPorDisponibilidad(nameFilterr.value)">
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-3 col-12">
+                    <button type="submit" class="btn filterSearchBtn" name="button" (click)=" filtrarPorDisponibilidad(nameFilterr.value)">Filtrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card" >
+            <div class="container filterType collapsed" data-toggle="collapse" href="#precio" role="button" aria-expanded="false" aria-controls="searchForm">
+                <div class="container-fluid">
+                    <span>
+                        <img class="imgSize" src="../assets/icons/filters/search.svg" >
+                    </span>
+                    <strong>Rango de precios</strong>
+                    <span class="filterCollapseSearch"></span>
+                </div>
+            </div>
+            <div class="container collapse searchForm" id="precio" >
+                <form class="row form-inline"  (keydown.enter)="$event.preventDefault()">
+                    <div class="col-lg-8 col-md-12 col-sm-9 col-12">
+                        <input type="text" class="form-control filterSearchInput" placeholder="Ingrece el rango inferior"
+                        #nameFilter1 nameFilter.value='' (keydown.enter)="filtrarPorRangoPrecios(nameFilter1.value,nameFilter2.value)">
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-9 col-12">
+                            <input type="text" class="form-control filterSearchInput" placeholder="Ingrece el rango superior"
+                            #nameFilter2 nameFilter.value='' (keydown.enter)="filtrarPorRangoPrecios(nameFilter2.value, nameFilter1.value)">
+                        </div>
+                    <div class="col-lg-4 col-md-12 col-sm-3 col-12">
+                        <button type="submit" class="btn filterSearchBtn" name="button" (click)="filtrarPorRangoPrecios(nameFilter2.value, nameFilter1.value)">Filtrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card" >
+                <div class="container filterType collapsed" data-toggle="collapse" href="#stock" role="button" aria-expanded="false" aria-controls="searchForm">
+                    <div class="container-fluid">
+                        <span>
+                            <img class="imgSize" src="../assets/icons/filters/search.svg" >
+                        </span>
+                        <strong>Cantidad en stock</strong>
+                        <span class="filterCollapseSearch"></span>
+                    </div>
+                </div>
+                <div class="container collapse searchForm" id="stock" >
+                    <form class="row form-inline"  (keydown.enter)="$event.preventDefault()">
+                        <div class="col-lg-8 col-md-12 col-sm-9 col-12">
+                            <input type="text" class="form-control filterSearchInput" placeholder="Ingrese la cantidad que desea buscar"
+                            #nameFilter nameFilter.value='' (keydown.enter)="filtrarPorStock(nameFilter.value)">
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-3 col-12">
+                            <button type="submit" class="btn filterSearchBtn" name="button" (click)="filtrarPorStock    (nameFilter.value)">Filtrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+  
+  </div>
+
+  <div class="container-fluid col-md-8">
+    <app-hoteles  [productos]="productosMostrarConFiltro"></app-hoteles>
+  </div>
+ 
+
+</div>
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Carrito</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Modificar</th>
+                        <th scope="col">Borrar</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let item of carrito">
+                      <tr>
+                        <td>{{item.producto.name}}</td>
+                        <td>{{item.cantidad}}</td>
+                        <td> <button type="button" class="btn btn-secondary"  data-toggle="collapse" [attr.data-target]="'#' + item.producto.name + item.cantidad">Modificar</button></td>
+                        <td> <button type="button" class="btn btn-danger" (click)="eliminarItem(item)">Borrar</button></td>
+                      </tr>
+                      <tr id={{item.producto.name+item.cantidad}}  class="collapse">
+                        <td> {{item.producto.name}}  </td>
+                        <td>  <input #cantidad class="form-control sizeInput" type="text"  value="{{item.cantidad}}"> </td>
+                        <td><button type="button" class="btn btn-success" data-toggle="collapse" [attr.data-target]="'#' + item.producto.name + item.cantidad" (click)="modificarCantidad(item,cantidad.value)" >Guardar</button></td>  
+                        <td><button type="button" class="btn btn-danger" data-toggle="collapse" [attr.data-target]="'#' + item.producto.name + item.cantidad" >Cancelar</button></td>
+                    </tr>
+                    </tbody>
+                  </table>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,36 @@
+<br>
+<div  class="row">
+
+<div class="col-lg-1"></div>
+
+<div class="row col-lg-10">
+     
+          
+            <div class="col-lg-3 card" *ngFor="let producto of productos">
+                 
+                    <div class="container-fluid productosContainerPrice">
+                            <div class="productosLblPrice">
+                                    Nombre : {{producto.name}}
+                                    <br>
+                                    Cantidad : {{producto.quantity}}
+                                    <br>
+                                    Disponible : {{producto.available}}
+
+                            </div>
+                            <span>
+                                
+                                <label class="productosPrice">   {{producto.price}}</label>
+                            </span>
+                          
+                            <button class="btn productosPriceBtn" (click)="agregarAlCarrito(producto,nameFilter1.value)" name="button">Agregar</button>
+                            <input type="text" class="form-control filterSearchInput" placeholder="Cantidad"
+                            #nameFilter1 nameFilter.value='' (keydown.enter)="agregarAlCarrito(producto,nameFilter1.value)">
+                  
+                    </div>
+                    <br>
+            </div>
+</div>
+</div>
+
+    
+

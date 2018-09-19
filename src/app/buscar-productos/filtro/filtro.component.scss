@@ -1,0 +1,105 @@
+
+
+
+.imgSize
+{
+    height: 20px;
+    width: 20px;
+}
+
+.imgSize2:hover{
+    cursor: pointer;
+   }
+
+.sizeInput
+{
+    width: 55px;
+}
+
+.searchForm
+{
+    padding-bottom: 10px;
+    font-size: 13px;
+}
+
+@media only screen and (max-width: 600px) 
+{
+    .wholeFilter
+    {
+        padding-left: 0px;
+        
+    }
+}
+
+@media only screen and (min-width: 600px) 
+{
+    .wholeFilter
+{
+    padding-left: 10px;
+}
+}
+
+@media only screen and (min-width: 800px) 
+{
+    .wholeFilter
+    {
+        padding-left: 28px;
+    }
+}
+
+.filterType
+{
+    color: #3498DB;
+    cursor: pointer;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.filterType .filterCollapseSearch::before
+{
+    font-family: "Font Awesome 5 Free";
+    float: right;
+    font-weight: 900;
+    content:"\f0d8";
+}
+
+.filterType.collapsed .filterCollapseSearch::before
+{
+    content:"\f0d7";
+}
+
+.container-fluid
+{
+    margin: 0;
+    padding: 0;
+}
+
+.filterSearchInput
+{
+    min-width: 100%;
+    font-size: 12px;
+}
+
+.filterSearchBtn
+{
+    color: white;
+    background-color: #093E80;
+    border: none;
+    border-radius: 2px;
+    font-size: 15px;
+    min-width: 100%;
+}
+
+.filterStarLabel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+.filterStarImg{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+}
